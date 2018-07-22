@@ -1,0 +1,956 @@
+#ku-eyebrow ul.navbar-nav li a{
+}
+/* font styles */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+body {
+    background: #fff;
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 15px;
+    line-height: 26px;
+    overflow-x: hidden;
+}
+html {
+    font-family: 'Raleway', sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6  {
+    font-family: 'Raleway';
+}
+h1 a {
+    color: #fff !important;
+}
+h5, .h5 {
+    font-size: 16px;
+    line-height: 26px;
+}
+a  {
+    font-family: 'Raleway' !important;
+}
+.list-unstyled {
+    line-height: 2.8;
+}
+p {
+    margin: 5px 0 10.5px;
+}
+.ku-leader-shortbio+.introcopy {
+    font-family: 'Raleway';
+    font-size: 17px;
+    line-height: 27px;
+}
+.list-spaced>li {
+    font-size: 17px;
+}
+.section-heading {
+    font-family: 'Raleway';
+}
+.glyphicon-envelope:before {
+    content: "\2709";
+    font-size: 24px;
+}
+
+/* navigation styles */
+
+#main-menu {
+    margin-top: -10px;
+}
+#main-menu.navbar-default {
+    background-color: transparent;
+}
+#main-menu ul.nav {
+    background: transparent;
+    border-bottom: none;
+}
+#main-menu ul.nav a {
+    color: #fff;
+}
+#main-menu li {
+    font-size: 15px !important;
+}
+#main-menu ul.nav li {
+    margin-top: 5px;
+}
+#main-menu ul.nav li {
+    margin-top: 5px;
+}
+body.homepage #main-menu ul.nav {
+    margin-top: 70px;
+}
+.navbar {
+    border-radius: 0;
+}
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+    vertical-align: top;
+}
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+}
+body.homepage #main-menu ul.nav>li:first-child a {
+    background: transparent url(./nav-home-link_white.png) no-repeat scroll 15px 15px;
+    text-indent: 46px;
+    overflow: hidden;
+    width: 45px;
+    margin-left: 0;
+}
+#main-menu ul.nav>li+li.active>ul {
+    border-width: 0;
+    display: block;
+    margin-top: 2px;
+    padding-top: 10px;
+}
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+        display: block;    
+   }
+
+/* tabbed nav styling */
+
+.tabbable.ku-tabbable.ku-tabbable-leftnav>.tab-content {
+    padding-left: 100px;
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+.tabbable.ku-tabbable.ku-tabbable-leftnav>.nav>li.nav-title {
+    background-color: #ddd;
+    font-style: italic;
+    margin-top: -50px;
+}
+.tabbable.ku-tabbable.ku-tabbable-leftnav {
+    background: #fff;
+    border: none;
+    margin-bottom: 40px;
+}
+.tabbable.ku-tabbable.ku-tabbable-leftnav>.nav>li.nav-title {
+    background-color: #003459;
+    border-bottom: 0;
+    font-style: italic;
+}
+ul.nav.nav-pills.nav-stacked.col-xxs-12.col-sm-3.col-md-2 {
+    margin-top: 50px;
+}
+.nav>li>a {
+    padding: 12px 15px;
+}
+.ku-blue-box {
+    background: transparent;
+    color: #fff;
+    height: auto;
+    padding: 0;
+    text-align: center;
+}
+
+/* eyebrow styles */
+
+#ku-eyebrow>.container>.row>nav #ku-directory-button {
+    background: transparent;
+}
+#ku-eyebrow>.container>.row>nav li>a {
+    color: #dde5ed !important;
+}
+#ku-eyebrow {
+    background: #0051ba url(https://cms.ku.edu/profiles/kudrupal/modules/ku/ku_brand2017/dotted-white.svg) top left repeat !important;
+    font-size: 12.6px;
+    height: 40px;
+    box-shadow: none;
+    border-bottom: none;
+}
+
+/* branding styles */
+
+body.homepage #page-header {
+    background-color: #0051ba;
+    width: 100%;
+}
+body.homepage #ku-branding header>a {
+    top: -94px;
+    left: 0;
+}
+body.homepage #ku-branding header h1 {
+    margin-top: -70px;
+    width: 450px;
+}
+#ku-branding header>a {
+    height: 80px;
+    width: 128px;
+}
+#ku-branding {
+    margin: 0 auto;
+    width: 1140px;
+}
+#page-header {
+    height: 110px;
+    background-color: #0051ba;
+    width: 100%;
+}
+#ku-branding header h1, #ku-branding header .site-subtitle {
+    margin-left: 140px;
+}
+
+/* search styles */
+
+body.homepage #ku-branding form {
+    margin-top: -70px;
+}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    margin-left: -5px;
+    height: 35px;
+    border-radius: 5px;
+}
+#ku-branding form input {
+    width: 200px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.5);
+    border: none;
+}
+
+/* hero styles */
+
+#main-slideshow {
+    top: 0;
+    margin-bottom: 30px;
+    height: 896px;
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
+    display: none;
+}
+#main-slideshow #homepage-slideshow figcaption>.caption, #main-slideshow #homepage-slideshow figcaption>.attribution {
+    text-shadow: none;
+}
+#main-slideshow #homepage-slideshow .carousel-inner .item img {
+    background-repeat: no-repeat;
+    height: 685px;
+}
+#main-slideshow #homepage-slideshow {
+    height: 0;
+}
+#main-slideshow #homepage-slideshow .carousel-inner {
+    height: 0;
+}
+#main-slideshow #homepage-slideshow figcaption>.caption.bottom-left {
+    bottom: 0;
+}
+.carousel-control.left, .carousel-control.right {
+    display: none;
+}
+figure.item.active.bottom-left {
+    height: 800px;
+}
+#main-slideshow #homepage-slideshow #homeslide-slide8 {
+    background-image: url(/assets/images/homepage/slideshow/homeslide-slide8.jpg);
+    width: 2560px;
+    margin-left: -710px;
+    height: 896px;
+}
+
+/* news highlights styels */
+
+#ku-highlights {
+    background-image: none;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+#ku-highlights .ku-highlight-slider .slide-right {
+    display: none !important;
+}
+.ku-highlight-slider div.owl-item>article {
+    border-left: none;
+}
+.ku-highlight-slider {
+    margin-bottom: 0;
+}
+article.owl-item p {
+    font-size: 12px;
+    line-height: 15px;
+}
+
+/* block styles */
+
+.far-above .give-text {
+    background: #0051ba;
+}
+.far-above .give-text, .maps-button .map-button-text, .jobs-button .jobs-text {
+    font-family: 'Raleway';
+}
+.jobs-button .jobs-text {
+    background-color: #0051ba;
+    background-image: -webkit-linear-gradient(top,rgba(0,81,186,.0) 0,#0051ba 100%);
+    background-image: linear-gradient(to bottom,rgba(0,81,186,.0) 0,#0051ba 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0051ba', endColorstr='#0051ba', GradientType=0);
+}
+.maps-button .map-button-text {
+    background-color: #0051ba;
+    background-image: -webkit-linear-gradient(top,rgba(0,81,186,.0) 0,rgba(0,81,186,.0) 100%);
+    background-image: linear-gradient(to bottom,rgba(0,81,186,.0) 0,rgba(0,81,186,.0) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0051ba', endColorstr='#0051ba', GradientType=0);
+}
+
+/* widget styles */
+
+.tabbable.ku-tabbable .nav-tabs>li>a {
+    background-color: #efefef;
+}
+.panel-group .panel {
+    border-radius: 0;
+}
+.panel {
+    box-shadow: none;
+    margin-top: 10px !important;
+}
+
+/* twitter */
+
+#main-slideshow #twitter-feed {
+    display: none;
+}
+
+/* footer styles */
+
+#unit-footer {
+    margin-top: 80px;
+    border-top: none;
+    background: #FFF url(./dotted-grey.svg) left top repeat;
+    background-size: 1%;
+    padding-top: 40px;
+}
+#ku-footer a {
+    color: #fff;
+    font-size: 13px;
+}
+footer#ioa-statement p {
+    font-size: 8px;
+    line-height: 10px;
+}
+#ioa-statement a {
+    font-size: 8px !important;
+}
+#ku-footer {
+    background: #003459;
+    border-top: none;
+    color: #fff;
+    padding-top: 20px;
+}
+.footer-wrapper {
+    border-right: 55px solid transparent;
+    border-top: 195px solid #dde5ed;
+    width: 90%;
+    padding: 0;
+    background: transparent;
+}
+.row.upper-footer {
+    margin-top: -150px;
+    width: 100%;
+}
+
+/* second-level page styles */
+
+/* second-level nav and page header styles */
+
+body.second-level-nav #page-header {
+    margin-bottom: 30px;
+    background-color: #0051ba;
+    width: 100%;
+    height: 115px;
+}
+body.second-level-nav #main-menu {
+    margin-bottom: 55px;
+    margin-top: 0;
+
+}
+body.second-level-nav #ku-branding {
+    height: 110px;
+    overflow: visible;
+    margin: 0 auto;
+}
+body.second-level-nav #main-menu ul.nav {
+    background: transparent;
+    border-bottom: 1px solid #ccc;
+    height: 45px;
+    margin-top: -8px;
+}
+#main-menu ul.nav>li:first-child a {
+    margin-left: 0;
+}
+body.second-level.has-footnotes #ku-branding {
+    margin: 0 auto;
+}
+body.second-level-nav #main-menu ul.nav>li>ul {
+    background-color: transparent;
+}
+body.second-level-nav #main-menu ul.nav a {
+    color: #0051ba;
+}
+body.second-level.has-footnotes #main-menu ul.nav a {
+    color: #0051ba;
+}
+body.second-level-nav #main-menu ul.nav>li+li.active>a {
+    background-color: transparent;
+    border-bottom: none;
+}
+body.second-level-nav #main-menu ul.nav>li:first-child a {
+    margin-left: 0;
+}
+body.second-level-nav #main-menu ul.nav>li>ul {
+    padding-left: 0;
+}
+.second-level #main-menu ul.nav a {
+    color: #0051ba;
+}
+#main-menu ul.nav>li+li.active>a {
+    border-top: 2px solid #e8000d;
+    margin-top: -5px;
+}
+body.second-level-nav #main-menu ul.nav>li+li.active>a {
+        margin-top: -1px;
+}
+body.second-level.has-footnotes #main-menu ul.nav {
+    margin-bottom: 30px;
+    margin-top: -2px;
+}
+body.second-level.second-level-nav.has-footnotes #main-menu ul.nav {
+    margin-bottom: 30px;
+    margin-top: -7px;
+}
+#main-menu ul.nav>li:first-child a {
+    background-position: 15px 15px;
+}
+body.second-level.has-footnotes #main-menu.navbar-default {
+
+}
+
+/* second-level left nav styles */
+
+body.left-nav #main-content {
+    background: 0 0;
+    background: -moz-linear-gradient(left,#fff 0,#fff 217px,#fff 217px,#fff 100%);
+    background: -webkit-gradient(linear,left top,right top,color-stop(0,#fff),color-stop(217px,#fff),color-stop(217px,#fff),color-stop(100%,#fff));
+    background: -webkit-linear-gradient(left,#fff 0,#fff 217px,#fff 217px,#fff 100%);
+    background: -o-linear-gradient(left,#fff 0,#fff 217px,#fff 217px,#fff 100%);
+    background: -ms-linear-gradient(left,#fff 0,#fff 217px,#fff 217px,#fff 100%);
+    background: linear-gradient(to right,#fff 0,#fff 217px,#fff 217px,#fff 100%);
+}
+body.second-level-nav #ku-branding header h1, #ku-branding header .site-subtitle {
+    line-height: 50px;
+}
+body.second-level.has-footnotes #ku-branding header h1, #ku-branding header .site-subtitle {
+    line-height: 50px;
+}
+#left-nav dl dt {
+    font-family: "Times New Roman",Times,serif;
+    font-size: 36px;
+}
+#left-nav>header {
+    background-image: none;
+    background-color: #003459;
+    font-family: 'Raleway';
+}
+
+/* second-level sidebar styles */
+
+#main-sidebar section>.contents {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    background-image: -webkit-gradient(radial,100% 100%,0,100% 100%,500,color-stop(0,#fff),color-stop(100%,#fff));
+    background-image: -webkit-radial-gradient(right bottom,farthest-corner,#fff 0,#fff 100%);
+    background-image: -moz-radial-gradient(right bottom,farthest-corner,#fff 0,#fff 100%);
+    background-image: -ms-radial-gradient(right bottom,farthest-corner,#fff 0,#fff 100%);
+    background-image: -o-radial-gradient(right bottom,farthest-corner,#fff 0,#fff 100%);
+    background-image: radial-gradient(farthest-corner at right bottom,#fff 0,#fff 100%);
+}
+.two-column li {
+    margin-right: 0;
+    width: 100%;
+}
+
+/* content styles */
+#main-content>.row>article {
+    padding-top: 0;
+    margin-top: 0;
+}
+.news-slider.row {
+    display: none;
+}
+
+/* block styling */
+
+.why-ku-apply .ku-bragpoints .carousel-inner .item p {
+    font-size: 13px;
+    line-height: 18px;
+}
+.why-ku-apply header {
+    background-image: -webkit-linear-gradient(top,#999 0,#999 100%);
+    background-image: linear-gradient(to bottom,#999 0,#999 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#999', endColorstr='#999', GradientType=0);
+}
+#main-sidebar section>.contents>header {
+    border-bottom: 1px solid #ccc;
+    color: #333;
+    font-family: 'Raleway';
+}
+div#outreach-carousel {
+  width: 100%;
+}
+
+/* widget styling */
+
+.tabbable.ku-tabbable>.tab-content {
+    border: 1px solid #ccc !important;
+    padding: 10px !important;
+}
+
+
+/* responsive styles */
+
+@media all and (min-width: 1441px) and (max-width: 1920px) {
+    #main-slideshow #homepage-slideshow #homeslide-slide8 {
+        background-image: url(/assets/images/homepage/slideshow/homeslide-slide8-1920.jpg);
+        width: 1920px;
+        margin-left: -400px;
+        height: 672px;
+    }
+    #main-slideshow {
+        margin-bottom: 30px;
+        height: 672px;
+    }
+    figure.item.active.bottom-left {
+        height: 600px;
+    }
+}
+
+@media all and (min-width: 1200px) and (max-width: 1440px) {
+    #main-slideshow #homepage-slideshow #homeslide-slide8 {
+        background-image: url(./homeslide-slide8-1440.jpg);
+        width: 1440px;
+        margin-left: -150px;
+        height: 504px;
+    }
+    #main-slideshow {
+        margin-bottom: 30px;
+        height: 504px;
+    }
+    figure.item.active.bottom-left {
+        height: 450px;
+    }
+    .row.upper-footer {
+        width: 90%;
+    }
+}
+
+@media all and (min-width: 992px) and (max-width: 1199px) {
+    #main-slideshow #homepage-slideshow #homeslide-slide8 {
+        background-image: url(/assets/images/homepage/slideshow/homeslide-slide8-1200.jpg);
+        width: 1200px;
+        margin-left: -120px;
+        height: 420px;
+    }
+    #main-slideshow #homepage-slideshow .carousel-inner .item img {
+        margin-left: -120px;
+        width: 1200px;
+    }
+    #main-slideshow {
+        margin-bottom: 0;
+        height: 420px;
+    }
+    #main-slideshow #homepage-slideshow figcaption>.caption.bottom-left {
+        bottom: 40px;
+    }
+    #ku-highlights {
+        margin-top: 30px;
+    }
+    .ku-highlight-slider {
+        margin-bottom: 10px;
+    }
+    .owl-wrapper p {
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .tabbable.ku-tabbable.ku-tabbable-leftnav {
+        margin-bottom: 0;
+    }
+    #unit-footer {
+        margin-top: 40px;
+    }
+    #ku-branding {
+        width: 900px;
+    }
+    #ku-branding header>a {
+        height: 70px;
+        width: 118px;
+        margin-top: -100px;
+        margin-left: -30px;
+    }
+    body.second-level.second-level-nav #ku-branding header>a {
+        margin-top: 0;
+    }
+    body.second-level.second-level-nav #ku-branding header h1, #ku-branding header .site-subtitle {
+        margin-left: 100px;
+    }
+    body.second-level.has-footnotes #ku-branding header>a {
+        margin-top: 0;
+    }
+    body.second-level.has-footnotes #ku-branding header h1, #ku-branding header .site-subtitle {
+        margin-left: 100px;
+    }
+    body.second-level.second-level-nav.has-footnotes #main-menu ul.nav {
+        margin-top: -2px;
+    }
+    body.second-level.second-level-nav.has-footnotes #main-menu.navbar-default {
+        margin-top: -5px;
+    }
+    body.second-level.has-footnotes #main-menu.navbar-default {
+        margin-top: -10px;
+    }
+    body.homepage #ku-branding header h1 {
+        width: 530px;
+        margin-left: 100px;
+    }
+    #ku-branding form input {
+        width: 150px;
+        height: 30px;
+    }
+    .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+        height: 30px;
+    }
+    body.homepage #ku-branding header h1>a {
+        text-indent: 551px;
+    }
+    body.homepage #ku-branding header>a {
+        top: 10px;
+    }
+    figure.item.active.bottom-left {
+        height: 430px;
+    }
+    .row.upper-footer {
+        width: 90%;
+    }
+}
+
+
+@media all and (min-width: 768px) and (max-width: 991px) {
+    #main-slideshow #homepage-slideshow #homeslide-slide8 {
+        background-image: url(/assets/images/homepage/slideshow/homeslide-slide8-1000.jpg);
+        width: 1000px;
+        margin-left: -130px;
+        height: 350px;
+    }
+    #main-slideshow #homepage-slideshow .carousel-inner .item img {
+        margin-left: -130px;
+        width: 1000px;
+    }
+    #main-slideshow #homepage-slideshow figcaption>.caption.bottom-left {
+        bottom: 40px;
+    }
+    #main-slideshow {
+        margin-bottom: 30px;
+        height: 350px;
+    }
+    #ku-highlights {
+        margin-top: 30px;
+    }
+    .ku-highlight-slider {
+        margin-bottom: 0;
+    }
+    article.owl-item p {
+        font-size: 11px;
+        line-height: 12px;
+    }
+    .tabbable.ku-tabbable.ku-tabbable-leftnav {
+        margin-bottom: 0;
+    }
+    #ku-branding {
+        width: 740px;
+    }
+    #ku-branding header>a {
+        height: 70px;
+        width: 118px;
+        margin-top: -100px;
+        margin-left: -30px;
+    }
+    body.second-level.second-level-nav #ku-branding header>a {
+        margin-top: 0;
+    }
+    body.second-level.second-level-nav #ku-branding header h1, #ku-branding header .site-subtitle {
+        margin-left: 0;
+    }
+    body.second-level.has-footnotes #ku-branding header>a {
+        margin-top: 0;
+    }
+    body.second-level.has-footnotes #ku-branding header h1, #ku-branding header .site-subtitle {
+        margin-left: 0;
+    }
+    body.second-level.second-level-nav.has-footnotes #main-menu ul.nav {
+        margin-top: -2px;
+    }
+    body.second-level.second-level-nav.has-footnotes #main-menu.navbar-default {
+        margin-top: -5px;
+    }
+    body.second-level.has-footnotes #main-menu.navbar-default {
+        margin-top: 18px;
+    }
+    body.homepage #ku-branding header h1 {
+        width: 330px;
+        margin-left: 100px;
+    }
+    #ku-branding form input {
+        width: 150px;
+        height: 30px;
+    }
+    .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+        height: 30px;
+    }
+    .row.upper-footer {
+        margin-left: 20px;
+        margin-right: 20px;
+        max-width: 80%;
+    }
+    .footer-wrapper {
+        border-right: 0 solid transparent;
+        width: 100%;
+    }
+    #main-menu li {
+        font-size: 14px !important;
+    }
+    figure.item.active.bottom-left {
+        height: 350px;
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+    .ku-highlight-slider article {
+        height: 200px !important;
+    }
+    figure.item.active.bottom-left {
+        height: 350px;
+    }
+    .ku-highlight-slider {
+        height: 200px;
+    }
+    .row.upper-footer {
+        margin-left: 10px;
+        margin-right: 10px;
+        max-width: 100%;
+        margin-top: -275px;
+    }
+    .footer-wrapper {
+        border-top: 295px solid #dde5ed;
+        border-right: 0 solid transparent;
+        width: 100%;
+    }
+}
+@media all and (min-width: 720px) and (max-width: 767px) {
+    #main-slideshow #homepage-slideshow #homeslide-slide8 {
+        background-image: url(/assets/images/homepage/slideshow/homeslide-slide8-1000.jpg);
+        margin-left: 0;
+        height: auto;
+        max-height: 300px;
+    }
+    #main-slideshow {
+        margin-bottom: 0;
+        height: 320px;
+    }
+}
+@media all and (min-width: 481px) and (max-width: 719px) {
+    #main-slideshow #homepage-slideshow #homeslide-slide8 {
+        background-image: url(/assets/images/homepage/slideshow/homeslide-slide8-1000.jpg);
+        margin-left: 0;
+        height: auto;
+        max-height: 250px;
+    }
+}
+@media all and (min-width: 481px) and (max-width: 529px) {
+    #main-slideshow {
+        margin-bottom: 0;
+        height: 250px;
+    }
+}
+@media all and (min-width: 530px) and (max-width: 631px) {
+    #main-slideshow {
+        margin-bottom: 0;
+        height: 270px;
+    }
+}
+@media all and (min-width: 632px) and (max-width: 719px) {
+    #main-slideshow {
+        margin-bottom: 0;
+        height: 300px;
+    }
+}
+@media all and (min-width: 320px) and (max-width: 480px) {
+    #main-slideshow #homepage-slideshow #homeslide-slide8 {
+        background-image: url(/assets/images/homepage/slideshow/homeslide-slide8-1000.jpg);
+        margin-left: 0;
+        height: auto;
+        max-height: 170px;
+    }
+    #main-slideshow {
+        margin-bottom: 0;
+        height: 230px;
+    }    
+}
+@media (max-width: 767px) {
+#main-menu.navbar-default {
+    background-image: -webkit-linear-gradient(top,#0051ba 0,#0051ba 100%);
+    background-image: linear-gradient(to bottom,#0051ba 0,#0051ba 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0051ba', endColorstr='#0051ba', GradientType=0);
+}
+#ku-branding header>a {
+    height: 60px;
+    width: 108px;
+    margin-top: 10px;
+}
+body.homepage #ku-branding header h1>a {
+    text-shadow: none;
+}
+body.second-level.second-level-nav.has-footnotes #ku-branding header>a {
+    height: 60px;
+    width: 108px;
+    margin-top: 20px;
+}
+body.homepage #ku-branding header h1 {
+    margin-top: 40px;
+    width: 450px;
+    margin-left: 10px;
+}
+#main-slideshow #homepage-slideshow .carousel-inner .item img {
+    height: auto;
+    margin-left: 0;
+    width: auto;
+}
+#ku-highlights {
+    height: 220px;
+    margin-bottom: 10px;
+    position: relative;
+    top: 30px;
+}
+#main-slideshow #homepage-slideshow figcaption {
+    background-image: -webkit-linear-gradient(top,rgba(0,81,186,1.0) 0,rgba(0,81,186,1.0) 100%);
+    background-image: linear-gradient(to bottom,rgba(0,81,186,1.0) 0,rgba(0,81,186,1.0) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#800051ba', endColorstr='#bf0051ba', GradientType=0);
+    padding: 15px;
+}
+#main-menu ul.nav a {
+    color: #333;
+}
+body.homepage #ku-branding header>a {
+    margin-left: -35px;
+}
+body.second-level-nav #main-menu ul.nav a {
+    color: #333;
+}
+body.second-level-nav #main-menu ul.nav>li>ul {
+    background-color: #fff;
+}
+body.homepage #main-menu ul.nav>li:first-child a {
+    background: transparent url(../images/template-icons/nav-home-link.png) no-repeat scroll 15px 30px;
+}
+body.second-level.second-level-nav.left-nav #ku-branding header>a {
+    margin-top: 30px;
+}
+body.second-level.second-level-nav.left-nav #ku-branding header h1, #ku-branding header .site-subtitle {
+    margin-top: -40px;
+    margin-left: 120px;
+}
+body.second-level.second-level-nav.has-footnotes #ku-branding header h1, #ku-branding header .site-subtitle {
+    margin-top: -50px;
+    margin-left: 120px;
+}
+body.second-level.has-footnotes #ku-branding header h1, #ku-branding header .site-subtitle {
+    margin-top: -45px;
+    margin-left: 120px;
+}
+body.second-level.has-footnotes #main-content {
+    margin-top: 30px;
+}
+.navbar-nav > li {
+    display: block;
+    float: none;
+}
+body.second-level-nav #main-menu ul.nav {
+    height: auto;
+}
+.tabbable.ku-tabbable.ku-tabbable-leftnav {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+#unit-footer {
+    margin-top: 20px;
+    height: 185px;
+}
+.row.upper-footer {
+    font-size: 14px;
+    line-height: 20px;
+}
+a.ku-icon.ku-icon-twitter {
+    margin-left: 3px;
+}
+section.col-xxs-6.text-right.hidden-print {
+    padding-left: 0px;
+    padding-right: 7px;
+}
+.title, .contactdetails {
+    margin-left: 0;
+}
+#ku-eyebrow>.container>.row>.navbar-header {
+    display: none;
+}
+
+/* Fix for search box to show up on mobile */
+@media (max-width: 767px) {
+  #main-menu.navbar-default .navbar-toggle {    
+    margin: 5px 0;
+    padding: 7px 5px;
+  }
+ 
+  #ku-branding {
+    width: 100% !important;
+  }
+
+  #ku-branding form {
+    right: 5%;
+    top: 0px;
+    width: 100%;
+    margin-top: 0px !important;
+  }
+
+  body.second-level.second-level-nav.left-nav #ku-branding header h1 {
+    margin-top: -35px;
+    margin-left: 120px;
+    line-height: 25px;
+  }
+
+  body.second-level #ku-branding form {
+    top: 4px;
+ }
+
+  #main-menu.navbar-default .navbar-toggle {    
+    margin: 5px 0;
+    padding: 7px 5px;
+  }
+}
+
+@media (max-width: 460px) {
+  #ku-branding {
+    width: 100%;
+  }
+    
+  #ku-branding form {
+    right: 38%;
+    top: -4px;
+    width: 100%;
+  }
+ 
+  .form-control, #ku-branding button.btn.btn-default {
+    height: 30px;
+  }
+
+  body.second-level.second-level-nav.left-nav #ku-branding header h1 {
+    margin-top: -44px;    
+  }
+}

@@ -1,0 +1,481 @@
+function isPageletEmpty(pglt) {
+
+    var pgltbody = ghfwjq(pglt).find('.PTPAGELETBODY'), 
+        children = pgltbody.children();
+
+    
+    if (children.length === 0) {
+        return false;   // not loaded yet
+    } else if (children.length === 1) {
+        var child_id = children.first().attr('id') || '';
+        if (child_id.indexOf('_Blank') !== -1) {
+            return false;
+        }
+    }
+    
+    
+    
+    var textNodes = pgltbody.find('label, span, p').contents();
+    for (var i = 0; i < textNodes.length; i++) {
+        var node = textNodes.get(i);
+        if (node.nodeType === 3 && 
+            ghfwjq(node).closest('.ghfw-hidden').length === 0 &&
+            ghfwjq.trim(ghfwjq(node).text()).length !== 0) {
+            return false;
+        }
+    }
+
+    
+    var anchors = pgltbody.find('a.PSNAVPARENTLINK, a.PTNAVLINK');
+    for (var i = 0; i < anchors.length; i++) {
+        if (!isFirewallHidden(anchors.get(i)))
+            return false;
+    }
+
+    
+    
+    var fwNavIds = pgltbody.find('[data-fwid]');
+    for (var i = 0; i < fwNavIds.length; i++) {
+        if (!isFirewallHidden(fwNavIds[i])) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function isFirewallHidden(elem) {
+    return ghfwjq(elem).hasClass('ghfw-hidden');
+}
+
+function getIdFromParm(parmName, parmNameLen, anc) {
+    var href = ghfwjq(anc).attr('href') || '';
+    var portalParmPos = href.indexOf(parmName);
+    if (portalParmPos == -1) {
+        return;
+    }
+        
+    var portalNamePos = portalParmPos + parmNameLen + 1;
+    var ampPos = href.indexOf('&', portalNamePos);
+    return ampPos == -1 ? href.substring(portalNamePos) 
+                        : href.slice(portalNamePos, ampPos);
+}
+
+function getIdFromPTCNAV(anc) {
+    return getIdFromParm('PORTALPARAM_PTCNAV', "PORTALPARAM_PTCNAV".length, anc);
+}
+
+function getIdFromFname(anc) {
+    return getIdFromParm('fname', "fname".length, anc);
+}
+
+function getIdFromScname(anc) {
+    return getIdFromParm('scname', "scname".length, anc);
+}
+
+function startsWith(txt, start_txt) {
+    return !!txt && 
+           !!start_txt && 
+           txt.length >= start_txt.length && 
+           txt.substring(0, start_txt.length) == start_txt;
+}
+
+function getFwid(id) {
+    var leads = ['fldra_', 'crefli_fav_', 'crefli_', 'pthnavbca_', 
+                 'pthnavmru_', 'pthnavmrs_'];
+    for (var i = 0; i < leads.length; i++) {
+        if (startsWith(id, leads[i])) {
+            return id.substring(leads[i].length);
+        }
+    }
+    return id;
+}
+
+function setFirewallID(elem, fwid) {
+    if (!!fwid) {
+        ghfwjq(elem).attr('data-fwid', fwid);
+    }
+}
+
+function setFirewallIDsForNavigation(hideScope) {
+
+    ghfwjq('[data-ghfw="folderlink"]', hideScope).each( function() {
+        var fwid = getIdFromFname(this) || 
+                   getIdFromScname(this);
+        setFirewallID(ghfwjq(this).closest("li"), fwid);
+    });
+
+    ghfwjq('[data-ghfw="contentlink"]', hideScope).each( function() {
+        setFirewallID(ghfwjq(this).closest("li"), getIdFromPTCNAV(this));
+    });
+
+    ghfwjq('li.pthnavcref, li.pthnavfldr, li.pthnavfav, li.pthnavfldr, li.pthnavcref, li.ptnav2cref, li.ghnavcref', hideScope).each( function() {
+        setFirewallID(this, getFwid(this.id));
+    });
+
+    ghfwjq('li.ptnav2fldr, li.ghnavfldr', hideScope).each( function() {
+        setFirewallID(this, this.id);
+    });
+    
+    ghfwjq('a.PSNAVPARENTLINK', hideScope).each( function() {
+        setFirewallID(this, this.name);
+    });    
+
+    ghfwjq('a.PTNAVLINK', hideScope).each( function() {
+        setFirewallID(ghfwjq(this).closest('tr'), this.name);
+    });    
+
+    
+    ghfwjq('.EOPP_SCSECTIONCONTENTLINK, .EOPP_SCCHILDCONTENTLINK, .PSHYPERLINKNOUL', hideScope).each( function() {
+        setFirewallID(this, getIdFromPTCNAV(this));
+    });
+    
+    ghfwjq('.EOPP_SCCHILDFOLDERLINK, .EOPP_SCSECTIONLEFT', hideScope).each( function() {
+        var fwid = getIdFromFname(this) || 
+                   getIdFromPTCNAV(this);  
+        setFirewallID(this, fwid);
+    });
+
+    ghfwjq('.EOPP_SCSECTIONFOLDERLINK', hideScope).each( function() {
+        var fwid = getIdFromFname(this) || 
+                   getIdFromScname(this);
+        setFirewallID(this, fwid);
+    });
+
+    ghfwjq('.EOPP_SCCHILDCONTENTLINK', hideScope).each( function() {
+        var $this = ghfwjq(this);
+        setFirewallID($this.closest('li'), $this.attr('data-fwid'));
+    });
+
+    ghfwjq('.EOPP_SCSECTIONCONTENTLINK, .EOPP_SCSECTIONLEFT, .EOPP_SCSECTIONFOLDERLINK').each( function() {
+        var $this = ghfwjq(this), 
+            folder = $this.closest('.EOPP_SCSECTIONFOLDER').closest('td');
+        setFirewallID(folder, $this.attr('data-fwid'));
+    });
+
+    var worklist = ghfwjq('#pthdr2wl').parent();
+    setFirewallID(worklist, 'PT_WORKLIST_GBL');
+    setFirewallID(worklist.next('dt.pthdr2sep'), 'PT_WORKLIST_GBL');
+}
+
+function hidePagelets(isBlock, rnode) {
+    var pagelets = ghfwjq('.PTPAGELET'), 
+        pageletList = isBlock ? pageletAllowList : pageletBlockList,
+        flagged = false,
+        pagelet_filter = ':not([rnode])';   
+
+    if (!!rnode) { 
+        pagelet_filter = '[rnode="' + rnode + '"]';
+    }
+
+    pagelets.filter(pagelet_filter).each( function() {
+        flagged = !!pageletList[this.id];
+        if ( (isBlock && !flagged) || (!isBlock && flagged) ) {
+            ghfwjq(this).addClass('ghfw-hidden');
+        }    
+    });
+}
+
+function hideTabs(isBlock) {      
+
+    var tabList = isBlock ? tabAllowList : tabBlockList,
+        isMobile = ghfwjq('#portal_tabs li').length !== 0; 
+
+    ghfwjq('.pthomepagetabinactive, .EPPBR_SWAN_TAB_SELECTED, #portal_tabs li').each( function() {
+        var tab = ghfwjq(this),
+            anchor = tab.find('a').first(), 
+            tabName = getParameterFromAnchor(anchor[0],'tab'), 
+            flagged = !!tabList[tabName];
+
+        if ((isBlock && !flagged) || (!isBlock && flagged)) {
+            var els = [];
+            if (isMobile) {
+                els = [tab];
+            } else {
+                var rightImg = tab.next(),
+                    leftImg = tab.prev();
+                    tabSep = leftImg.prev();
+                els = [tab, rightImg, leftImg, tabSep];
+            }
+            ghfwjq.each(els, function() {
+                ghfwjq(this).addClass('ghfw-hidden');
+            });
+        }
+    });
+}
+
+function hideNavigation(showMe, hideScope, rnode) {
+    var nav_items = ghfwjq('[data-fwid]', hideScope), 
+        nav_filter = ':not([rnode])';   // default is everything local
+    if (!!rnode) {
+        nav_filter = '[rnode="' + rnode + '"]';
+    }
+
+    nav_items.filter(nav_filter).filter( function() {
+        var $this = ghfwjq(this),
+            interesting = showMe.isInteresting($this.attr('data-fwid'));
+            
+        
+        
+        
+        var showABNChild = $this.hasClass("ptabntn") && $this.closest('li.ptabndynportalfldr:not(.ghfw-hidden)').length > 0;
+        return interesting && !showABNChild;
+    }).addClass('ghfw-hidden');
+   
+    ghfwjq('.EOPP_SCMORELINK').closest('li').addClass('ghfw-hidden');
+    
+    
+    ghfwjq('.EOPP_SCSECTIONFOLDERLINK').closest('.EOPP_SCSECTIONFOLDER').closest('td').filter( function () {
+        return ghfwjq(this).find('a.EOPP_SCCHILDCONTENTLINK:not(.ghfw-hidden)').length === 0;
+    }).addClass('ghfw-hidden');
+    
+    
+    
+    ghfwjq('.EOPP_SCSECTIONCONTENT').filter( function () {
+        return ghfwjq(this).find('a.EOPP_SCSECTIONCONTENTLINK:not(.ghfw-hidden)').length === 0;
+    }).addClass('ghfw-hidden');
+}
+
+function hidePersonalization() {
+    ghfwjq('#pttabpercontent, #pttabperlayout').each( function() {
+        ghfwjq(this).parent().addClass('ghfw-hidden');
+    });
+}
+
+function hideHeaderOptions() {
+    
+    ghfwjq('#pthdr2navbarlinks a').each(function() {
+        var $this = ghfwjq(this),
+            parentDiv = $this.closest("div"),
+            ref = $this.attr('href') || '';
+
+        if (ref.indexOf("/c/") !== -1) {
+            var fwid = ref.split("/c/")[1].split(".")[1];
+            setFirewallID($this.closest("div"), fwid);
+        }
+        parentDiv.addClass('ghfw-hidden');
+
+    });
+}
+
+function markRemoteLinksInRemotePagelets() {
+    ghfwjq('.PTPAGELET[rnode]').each( function() {
+        var $this = ghfwjq(this), 
+            rnode = $this.attr('rnode');
+        $this.find('[data-fwid]').attr('rnode', rnode);
+        $this.parent('.pthpli').attr('rnode', rnode);
+    });
+}
+
+function jQueryFirewallHide(showMe, hideScope, rnode) {
+    if (typeof(showMe) === 'undefined') {
+        return;
+    }
+    
+    doPreProcessing(showMe, hideScope, rnode);
+
+    setFirewallIDsForNavigation(hideScope);
+
+    
+    
+    markRemoteLinksInRemotePagelets();
+    
+    hideTabs(showMe.defaultBlock);
+    
+    hidePagelets(showMe.defaultBlock, rnode);
+
+    hidePersonalization();
+    
+    hideHeaderOptions();
+
+    hideNavigation(showMe, hideScope);
+
+    if (!!hideScope) {
+        var $pagelet = ghfwjq(hideScope), 
+            rnode = $pagelet.attr('rnode');
+        
+        $pagelet.find('.PTPAGELET').trigger('pagelet_load');
+        
+        if (!!!rnode && isPageletEmpty(hideScope)) {
+            $pagelet.addClass('ghfw-hidden');
+        }
+        else if (!!rnode) {
+        }
+    }
+    else {
+        ghfwjq('.pthpli:not([rnode])').filter( function() {
+            return isPageletEmpty(this);
+        }).addClass('ghfw-hidden');
+    }
+
+    ensureWrapped();
+    doPostProcessing(showMe, hideScope, rnode);
+}
+    
+function doPreProcessing(showMe, hideScope, rnode) { 
+    try { 
+        if (typeof PreProcessLinks == 'function') { 
+            // Defined in HTML Object GS_FW_CUSTOM_JS 
+            PreProcessLinks(showMe, hideScope, rnode); 
+        } 
+    } catch ( e ) { if (typeof console !== 'undefined') { console.log(e); } } 
+} 
+     
+function doPostProcessing(showMe, hideScope, rnode) { 
+    try { 
+        if (typeof PostProcessLinks == 'function') { 
+            // Defined in HTML Object GS_FW_CUSTOM_JS 
+            PostProcessLinks(showMe, hideScope, rnode); 
+        }
+    } catch ( e ) { if (typeof console !== 'undefined') { console.log(e); } } 
+}
+
+function hideNavOverride( showMe, ref ) { 
+    if ( showMe.isBlock ) { 
+        showMe.itemList[ref] = 1; 
+    } else { 
+        delete showMe.itemList[ref]; 
+    } 
+} 
+
+function showNavOverride( showMe, ref ) { 
+    if ( showMe.isBlock ) { 
+        delete showMe.itemList[ref]; 
+    } else { 
+        showMe.itemList[ref] = 1; 
+    } 
+} 
+
+var wrapAppendNode = function(fn) {
+    return function(pNode, html) {
+        fn.apply( this, arguments );
+         
+        var hideScope = ghfwjq(arguments[0]);
+        setFirewallIDsForNavigation(hideScope);
+        hideNavigation(showMe, hideScope);
+        jQueryFirewallHide(showMe, hideScope);
+    }
+};
+
+var appendNodeWrapped = false;
+
+function ensureWrapped() {
+    try {
+        ptUtil.appendNodeFromHTML = wrapAppendNode(ptUtil.appendNodeFromHTML);
+        appendNodeWrapped = true;
+    }
+    catch (err) {
+    }
+}
+
+function portalReference( block, items, defaultBlock ) { 
+    this.isBlock = block; 
+    this.itemList = items; 
+    this.defaultBlock = defaultBlock;
+    this.is85 = appendNodeWrapped;
+}
+   
+portalReference.prototype.isInteresting = function( id , ctx ) {
+    var interesting = (this.isBlock ? this.itemList[id] == 1 : this.itemList[id] == null ); 
+    return interesting;
+}
+
+function getParameterFromAnchor( obj, param ) {
+    if ( obj == null || obj.href == null )  return '';
+
+    var ref = obj.href; 
+    while ( ref.indexOf('&amp;') != - 1) {
+        ref =  ref.replace( '&amp;', '&' ); 
+    }
+
+    var pos = ref.indexOf( '?' + param + '=' );
+    if ( pos == -1 ) {
+        pos = ref.indexOf( '&' + param + '=' );
+    }
+    return ( pos > 0  ? ref.substring(++pos).split('&')[0].split('=')[1] :  '' );
+}
+function PostProcessLinks(showMe, hideScope, rnode) {
+
+    // fix known issue where we unhide folders in nav collection pages that shouldn't be hidden cause they do have unhidden child folders
+    ghfwjq('.EOPP_SCSECTIONFOLDERLINK').closest('.EOPP_SCSECTIONFOLDER').closest('td').each( function () {
+        var $td = ghfwjq(this);
+        if ($td.hasClass('ghfw-hidden') && $td.find('a.EOPP_SCCHILDFOLDERLINK:not(.ghfw-hidden)').length > 0) {
+            $td.removeClass('ghfw-hidden');
+        }
+    });
+    
+    // unhide the 9 More... links for the Enrollment and Campus Personal Information folders
+    // we do this because the sections are hidden and we can't get to the links otherwise through the nav collection page
+    if (String(document.location.href).indexOf("WEBLIB_PTPP_SC.HOMEPAGE.FieldFormula.IScript_AppHP") !== -1) {
+        
+        ghfwjq('h2.EOPP_SCSECTIONFOLDERLINK').find('a.EOPP_SCSECTIONFOLDERLINK').each(function() {
+            var $this = ghfwjq(this),
+                secFldrText = $this.text();
+                //GH Change 06/08/2017 ML fix hidden 9 More link again as certin html changes
+                //made the exiting fix stop working. Also fixed the Campus Finances folder.  
+            if (secFldrText === "Enrollment" || secFldrText === "Campus Personal Information" || secFldrText === "Campus Finances") {
+                /*var $td = $this.closest("td.EOPP_SCSECTIONFOLDER.ghfw-hidden");
+                $td.find('.EOPP_SCMORELINK').closest('li').removeClass('ghfw-hidden');
+                $td.removeClass('ghfw-hidden');*/
+                $this.closest("table").find('a.EOPP_SCMORELINK').closest('li.ghfw-hidden').removeClass('ghfw-hidden')
+            }
+        });
+    }
+}
+
+if (String(document.location.href).indexOf("?tab=DEFAULT") !== -1) {
+    if (!!!window.real_doPostProcessing) {
+        window.real_doPostProcessing = window.doPostProcessing;
+      
+        window.wrapped_doPostProcessing = function(showMe, hideScope, rnode) {
+            real_doPostProcessing(showMe, hideScope, rnode);
+            
+            // begin case 5674
+            if (!!pageletBlockList && !ghfwjq.isEmptyObject(pageletBlockList)) {
+                var pagelets = pagelets = ghfwjq('.PTPAGELET'),
+                    flagged = false;
+
+                pagelets.each( function () {
+                    flagged = !!pageletBlockList[this.id];
+                    var $pglt = ghfwjq(this);
+                    if (!flagged) {
+                        $pglt.removeClass('ghfw-hidden'); // guardian
+                        $pglt.closest('li').removeClass('ghfw-hidden'); // student
+                    }
+                });
+            }
+            // end case 5674
+
+            // this is done for the guardian
+            // case 5674 ghfwjq('table.ghfw-hidden').removeClass('ghfw-hidden');
+
+            // this is done for the student
+            // case 5674 ghfwjq('li.pthpli.ghfw-hidden').removeClass('ghfw-hidden');
+
+            // Microsoft running in quirks mode fixups
+            var isIE = document.documentMode || /MSIE \d/.test(navigator.userAgent);
+            if (isIE && document.compatMode !== "CSS1Compat") {
+                            
+                // try to prevent the red background color on the left nav menu pagelet
+                if (ghfwjq('#ptnav2tree').length > 0) {
+                    setTimeout( function () {
+                        ghfwjq("<div id='ghfw_ie_style' style='display: none;'>&nbsp;</div><style type='text/css'>.ghfw-hidden-ie{background:none !important;}</style>").insertBefore('#ptnav2tree');
+                        ghfwjq('#ptnav2tree').addClass("ghfw-hidden-ie"); 
+                    }, 0);
+                }
+                
+                // make sure the folder image is hidden in the nav collection pagelet
+                ghfwjq('a.ghfw-hidden').each(function () {
+                    var $this = ghfwjq(this),
+                        par = $this.parent();
+                    if (par.is('li')) {
+                        par.addClass('ghfw-hidden');
+                    }              
+                });           
+            }
+        };
+        window.doPostProcessing = window.wrapped_doPostProcessing;
+    }
+}
+<!-- KU MOD 10/2016 T.Pepper -->
+<!-- This is a dummy object created to stop the GreyHeller products from throwing errors because this object did not exist. -->
